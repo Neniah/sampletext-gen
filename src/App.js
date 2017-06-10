@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Output from './Components/Output';
 import Select from './Components/Controls/Select';
+import Text from './Components/Controls/Text';
 
 
 class App extends Component {
@@ -39,6 +40,13 @@ class App extends Component {
     }, this.getSampleText);
   }
 
+  changeParas(number){
+    this.setState({
+      paras: number,
+    }, this.getSampleText);
+  }
+
+
   render() {
     return (
       <div className="App container">
@@ -46,8 +54,15 @@ class App extends Component {
         <hr/>
         <form className="class-inline">
           <div className="form-group">
-            <label>Include HTML:</label>
-            <Select value={this.state.html} onChange={this.showHTML.bind(this)}/>
+            <label>Paragraphs:</label>
+            <Text value={this.state.paras}
+              onChange={this.changeParas.bind(this)}
+              />
+          </div>
+          <div className="form-group">
+            <label className="custom-control">Include HTML:</label>
+            <Select value={this.state.html}
+              onChange={this.showHTML.bind(this)}/>
           </div>
         </form>
         <Output value={this.state.text} />
