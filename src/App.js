@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import Output from './Components/Output';
 
 class App extends Component {
   constructor(props){
@@ -27,13 +28,13 @@ class App extends Component {
     })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   render() {
     return (
       <div className="App">
-        Hello
+        <Output value={this.state.text} />
       </div>
     );
   }
